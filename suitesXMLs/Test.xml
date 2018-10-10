@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Test Suit" verbose="1">
+    <suite-files>
+        <suite-file path="Configuration.xml"></suite-file>
+        <suite-file path="Grophers.xml"></suite-file>
+    </suite-files>
+</suite>

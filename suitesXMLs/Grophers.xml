@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Grophers Test Suit" verbose="1" >
+
+    <test name="Grophers Blog Test Cases" >
+        <classes>
+            <class name="com.grofers.test.TestGrophersBlogPage"/>
+        </classes>
+    </test>
+</suite>
