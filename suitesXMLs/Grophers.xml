@@ -3,7 +3,7 @@
 
     <test name="Grophers Blog Test Cases" >
         <classes>
-            <class name="com.grofers.test.TestGrophersBlogPage"/>
+            <class name="com.grofers.test.TestGrofersBlogPage"/>
         </classes>
     </test>
 </suite>
