@@ -11,10 +11,15 @@ public class InitializeDrivers {
 
     private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 
-    public static WebDriver getDriver(String browserName) {
+	public static WebDriver getDriver() {
+		return getDriver("firefox");
+	}
+
+
+	public static WebDriver getDriver(String browserName) {
 
         WebDriver driver = null;
-        setGekoDriverBasedOnOS(browserName);
+        setGekoDriverBasedOnOS(browserName.toLowerCase());
         if (browserName.toLowerCase().contains("chrome")) {
             driver = drivers.get("Chrome");
             if (driver == null) {
@@ -34,7 +39,6 @@ public class InitializeDrivers {
 
         return driver;
     }
-
 
     static void setGekoDriverBasedOnOS(String browserName) {
 
