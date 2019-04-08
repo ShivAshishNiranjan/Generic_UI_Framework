@@ -6,6 +6,7 @@ import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -17,19 +18,25 @@ public class ConfigReader {
     private final static Logger logger = LoggerFactory.getLogger(ConfigReader.class);
 
 
-    public static String getValueFromConfigFile(String filePath, String fileName, String sectionName, String propertyName) throws ConfigurationException {
-        String columnName = null;
-        propertyName = propertyName.trim();
-        Configurations configs = new Configurations();
-        INIConfiguration config = configs.ini(filePath + "//" + fileName);
+    public static String getValueFromConfigFile(String filePath, String fileName, String sectionName, String propertyName) {
+        try {
+            String columnName = null;
+            propertyName = propertyName.trim();
+            Configurations configs = new Configurations();
+            INIConfiguration config = configs.ini(filePath + "//" + fileName);
 
-        if (sectionName != null && config.getProperty(sectionName.toLowerCase() + "." + propertyName.toLowerCase()) != null)
-            columnName = config.getProperty(sectionName.toLowerCase() + "." + propertyName.toLowerCase()).toString();
+            if (sectionName != null && config.getProperty(sectionName.toLowerCase() + "." + propertyName.toLowerCase()) != null)
+                columnName = config.getProperty(sectionName.toLowerCase() + "." + propertyName.toLowerCase()).toString();
 
-        else if (config.getProperty(propertyName.toLowerCase()) != null)
-            columnName = config.getProperty(propertyName.toLowerCase()).toString();
+            else if (config.getProperty(propertyName.toLowerCase()) != null)
+                columnName = config.getProperty(propertyName.toLowerCase()).toString();
 
-        return columnName;
+            return columnName;
+        } catch (Exception e) {
+            Assert.fail("Error: Reading in Config File: " + fileName + ", Section Name: " + sectionName
+                    + " ,Key Name: " + propertyName + ", Error Message: " + e.getMessage());
+            return null;
+        }
     }
 
 

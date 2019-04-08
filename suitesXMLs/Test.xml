@@ -2,6 +2,6 @@
 <suite name="Test Suit" verbose="1">
     <suite-files>
         <suite-file path="Configuration.xml"></suite-file>
-        <suite-file path="Grofers.xml"></suite-file>
+        <suite-file path="Instagram.xml"></suite-file>
     </suite-files>
 </suite>

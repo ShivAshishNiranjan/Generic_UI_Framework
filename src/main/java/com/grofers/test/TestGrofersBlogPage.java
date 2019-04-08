@@ -18,8 +18,6 @@ import java.util.List;
 
 
 public class TestGrofersBlogPage {
-
-
 	Logger logger = LoggerFactory.getLogger(TestGrofersBlogPage.class);
 	WebDriver driver;
 	GrofersBlog grofersBlog;

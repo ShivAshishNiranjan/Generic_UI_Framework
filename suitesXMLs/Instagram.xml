@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Instagram Test Suit" verbose="1" >
+
+    <test name="Instagram Test Cases" >
+        <classes>
+            <class name="com.grofers.test.TestInstagram"/>
+        </classes>
+    </test>
+</suite>
