@@ -63,11 +63,13 @@ public class TestGoogleMap {
         urls.add("https://www.google.com/maps/contrib/115033290295310928908/place/ChIJc3EyPna7eTkRo0PZTmymJP8/@24.6884646,78.3998178,3a,75y,90t/data=!3m7!1e2!3m5!1sAF1QipPRh8lOI8Qi3xM2-UXRmceNnPmfv62m45SALRFu!2e10!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPRh8lOI8Qi3xM2-UXRmceNnPmfv62m45SALRFu%3Dw393-h260-k-no!7i4032!8i2664!4m6!1m5!8m4!1e2!2s115033290295310928908!3m1!1e1");
 
         for (int i = 0; i < 100; i++) {
+            logger.info("Current Loop Count is : [{}]\n",i);
             for (String url : urls) {
-
+                logger.info("Opening the Url : [{}]\n",url);
+                logger.info("-----------------------------------------------------");
                 driver.get(url);
                 Thread.sleep(10000);
-                driver.close();
+                logger.info("-----------------------------------------------------");
             }
         }
 
