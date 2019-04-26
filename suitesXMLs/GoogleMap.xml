@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Google Map Test Suit" verbose="1" >
+
+    <test name="Google Map  Test Cases" >
+        <classes>
+            <class name="com.grofers.test.TestGoogleMap"/>
+        </classes>
+    </test>
+</suite>
