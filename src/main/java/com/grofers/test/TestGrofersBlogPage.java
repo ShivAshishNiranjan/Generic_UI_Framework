@@ -1,6 +1,7 @@
 package com.grofers.test;
 
 import com.grofers.helper.InitializeDrivers;
+import com.grofers.helper.PredicateRules;
 import com.grofers.helper.SeleniumWebDriverCommonHelper;
 import com.grofers.helper.ValidateBrokenLinkHelper;
 import com.grofers.pages.GrofersBlog;
@@ -33,14 +34,10 @@ public class TestGrofersBlogPage {
 			logger.info("Inside Before Class");
 			driver = InitializeDrivers.getDriver(ConfigureConstant.getConstantFieldsValue("browser"));
 			grofersBlog = new GrofersBlog(driver);
-
-
 		} catch (Exception e) {
 			logger.error("Some Exception at Before Class Level : [{}]", e.getMessage());
 			failedInConfigReading = true;
 		}
-
-
 	}
 
 
@@ -78,17 +75,21 @@ public class TestGrofersBlogPage {
 
 	@Test(dependsOnMethods = "validatePageURL", priority = 1)
 	public void validateAllLinksInPage() {
-
 		driver.get(grofersBlog.getPageUrl());
 		List<WebElement> allLinks = SeleniumWebDriverCommonHelper.findAllLinks(driver);
-		logger.debug("Total number of elements found " + allLinks.size());
+		logger.info("Total number of elements found " + allLinks.size());
+
+		// removing all BlankLinks
+		PredicateRules.getRules().forEach(allLinks::removeIf);
+
+		logger.info("Total number of elements remained " + allLinks.size());
 
 
 		for (WebElement element : allLinks) {
 
 			if (element.getAttribute("href").startsWith(grofersBlog.getBaseUrl())) {
 				String validationMessage = ValidateBrokenLinkHelper.isLinkBroken(element.getAttribute("href"));
-				logger.debug("URL: " + element.getAttribute("href") + " returned " + validationMessage);
+				logger.info("URL: " + element.getAttribute("href") + " returned " + validationMessage);
 
 				if (!validationMessage.toLowerCase().contains("ok")) {
 					logger.error("validation Message is [{}] for Url [{}]", validationMessage, element.getAttribute("href"));
@@ -125,16 +126,12 @@ public class TestGrofersBlogPage {
 		} else {
 			softAssert.assertFalse(false, "Any Or All Social Media Interaction Buttons not there in Current page");
 		}
-
-
 		softAssert.assertAll();
-
 	}
 
 
 	@Test(dependsOnMethods = "validatePageURL", priority = 3)
 	public void validateAllMandatoryLinks() {
-
 		driver.get(grofersBlog.getPageUrl());
 		List<String> allMandatoryLinksText = grofersBlog.getLinksToValidate();
 
@@ -147,7 +144,7 @@ public class TestGrofersBlogPage {
 
 	}
 
-	@Test(dependsOnMethods = "validatePageURL", priority = 4)
+	//@Test(dependsOnMethods = "validatePageURL", priority = 4)
 	public void validateLikeButtonFunctionality() throws InterruptedException {
 
 		driver.get(grofersBlog.getPageUrl());
@@ -193,7 +190,6 @@ public class TestGrofersBlogPage {
 
 
 	@AfterMethod
-
 	public void afterMethod() {
 		logger.info("Inside After Method");
 
