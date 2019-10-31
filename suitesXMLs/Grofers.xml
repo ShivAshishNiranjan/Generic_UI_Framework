@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Grophers Test Suit" verbose="1" >
+<suite name="Grofers Test Suit" verbose="1" >
 
-    <test name="Grophers Blog Test Cases" >
+<!--    <test name="Grofers Blog Test Cases" >-->
+<!--        <classes>-->
+<!--            <class name="com.grofers.test.TestGrofersBlogPage"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="Udemy Assignment" >
         <classes>
-            <class name="com.grofers.test.TestGrofersBlogPage"/>
+            <class name="com.grofers.test.TestCheckboxSelectionTest"/>
         </classes>
     </test>
 </suite>
