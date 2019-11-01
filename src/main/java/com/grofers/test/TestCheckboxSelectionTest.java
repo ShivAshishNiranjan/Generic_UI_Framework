@@ -1,11 +1,7 @@
 package com.grofers.test;
 
 import com.grofers.helper.InitializeDrivers;
-import com.grofers.helper.PredicateRules;
-import com.grofers.helper.SeleniumWebDriverCommonHelper;
-import com.grofers.helper.ValidateBrokenLinkHelper;
-import com.grofers.pages.GrofersBlog;
-import org.openqa.selenium.By;
+import com.grofers.pages.TableDemoPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
@@ -14,11 +10,8 @@ import org.testng.SkipException;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-
-import static java.lang.Thread.sleep;
+import java.util.function.Predicate;
 
 /**
  * @author : shiv.ashish@grofers.com
@@ -29,17 +22,16 @@ public class TestCheckboxSelectionTest {
 
     Logger logger = LoggerFactory.getLogger(TestGrofersBlogPage.class);
     WebDriver driver;
-    GrofersBlog grofersBlog;
+    TableDemoPage tableDemoPage;
     SoftAssert softAssert;
     private boolean failedInConfigReading = false;
-
 
     @BeforeClass
     public void beforeClass() {
         try {
             logger.info("Inside Before Class");
             driver = InitializeDrivers.getDriver(ConfigureConstant.getConstantFieldsValue("browser"));
-            grofersBlog = new GrofersBlog(driver);
+            tableDemoPage = new TableDemoPage(driver);
         } catch (Exception e) {
             logger.error("Some Exception at Before Class Level : [{}]", e.getMessage());
             failedInConfigReading = true;
@@ -62,29 +54,35 @@ public class TestCheckboxSelectionTest {
     }
 
 
-    @Test(priority = -1)
-    public void testCheckboxSelectionTest() throws InterruptedException {
-        driver.get("https://vins-udemy.s3.amazonaws.com/java/html/java8-stream-table.html");
-        String genderInput = "male";
+    @Test(dataProvider = "criteriaProvider")
+    public void testCheckboxSelectionTest(Predicate<List<WebElement>> searchCriteria) throws InterruptedException {
+        tableDemoPage.goTo();
+        tableDemoPage.selectRows(searchCriteria);
 
-        driver.findElements(By.tagName("tr"))
-                .stream()
-                .skip(1)
-                .map(tr -> tr.findElements(By.tagName("td")))
-                .filter(tdList->tdList.get(1).getText().equalsIgnoreCase(genderInput))
-                .map(tdList -> tdList.get(3))
-                .map(tdList ->  tdList.findElement(By.tagName("input")))
-                .forEach(WebElement::click);
-
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         softAssert.assertAll();
 
+    }
+
+    @DataProvider(name = "criteriaProvider")
+    public Object[][] testdata() {
+        Predicate<List<WebElement>> allMales = e -> e.get(1).getText().equalsIgnoreCase("male");
+        Predicate<List<WebElement>> allFemales = e -> e.get(1).getText().equalsIgnoreCase("female");
+        Predicate<List<WebElement>> allGender = allMales.or(allFemales);
+        Predicate<List<WebElement>> allAU = e -> e.get(2).getText().equalsIgnoreCase("AU");
+        Predicate<List<WebElement>> allFemaleAU = allFemales.and(allAU);
+        return new Object[][]{
+                {allFemales},
+                {allMales},
+                {allGender},
+                {allAU},
+                {allFemaleAU}
+        };
     }
 
     @AfterMethod
     public void afterMethod() {
         logger.info("Inside After Method");
-
     }
 
 
