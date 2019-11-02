@@ -7,9 +7,15 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-    <test name="Udemy Assignment" >
+<!--    <test name="Udemy Assignment" >-->
+<!--        <classes>-->
+<!--            <class name="com.grofers.test.TestCheckboxSelectionTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="Broken Link Assignment" >
         <classes>
-            <class name="com.grofers.test.TestCheckboxSelectionTest"/>
+            <class name="com.grofers.test.TestBrokenLink"/>
         </classes>
     </test>
 </suite>
