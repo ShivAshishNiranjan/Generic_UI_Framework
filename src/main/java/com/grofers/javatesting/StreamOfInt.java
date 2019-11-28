@@ -26,8 +26,6 @@ public class StreamOfInt {
 
         System.out.println("Sum is ::"+ sum);
 
-        IntStream.range(0,10).forEach(s -> System.out.println("Hare Krishna") );
-
-
+        IntStream.range(0,list.size()).forEach(s -> System.out.println("Hare Krishna") );
     }
 }
