@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Grofers Test Suit" verbose="1" >
+<suite name="Grofers Test Suit" verbose="1">
 
-<!--    <test name="Grofers Blog Test Cases" >-->
-<!--        <classes>-->
-<!--            <class name="com.grofers.test.TestGrofersBlogPage"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Udemy Assignment" >-->
-<!--        <classes>-->
-<!--            <class name="com.grofers.test.TestCheckboxSelectionTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-    <test name="Broken Link Assignment" >
+    <test name="Grofers Blog Test Cases">
         <classes>
-            <class name="com.grofers.java8andbeyond.PriceTableAssignment"/>
+            <class name="com.grofers.test.TestGrofersBlogPage"/>
         </classes>
     </test>
+
 </suite>

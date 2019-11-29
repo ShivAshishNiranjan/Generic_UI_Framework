@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Grofers Test Suit" verbose="1">
+
+    <!--    <test name="Udemy Assignment" >-->
+    <!--        <classes>-->
+    <!--            <class name="com.grofers.test.TestCheckboxSelectionTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="First Name Assignment " >-->
+    <!--        <classes>-->
+    <!--            <class name="com.grofers.java8andbeyond.FirstNameAssignment"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    -->
+    <!--    <test name="Price Table Assignment " >-->
+    <!--        <classes>-->
+    <!--            <class name="com.grofers.java8andbeyond.PriceTableAssignment"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+
+    <test name="Hoverable Drop Down Assignment ">
+        <classes>
+            <class name="com.grofers.java8andbeyond.HoverableDropDownTest"/>
+        </classes>
+    </test>
+
+
+</suite>
