@@ -15,7 +15,7 @@
 
     <test name="Broken Link Assignment" >
         <classes>
-            <class name="com.grofers.test.TestBrokenLink"/>
+            <class name="com.grofers.java8andbeyond.PriceTableAssignment"/>
         </classes>
     </test>
 </suite>
