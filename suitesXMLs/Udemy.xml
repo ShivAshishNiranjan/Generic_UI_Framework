@@ -20,11 +20,18 @@
     <!--    </test>-->
 
 
-    <test name="Hoverable Drop Down Assignment ">
+<!--    <test name="Hoverable Drop Down Assignment ">-->
+<!--        <classes>-->
+<!--            <class name="com.grofers.java8andbeyond.HoverableDropDownTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="Payment Screen Assignment ">
         <classes>
-            <class name="com.grofers.java8andbeyond.HoverableDropDownTest"/>
+            <class name="com.grofers.java8andbeyond.PaymentScreenTest"/>
         </classes>
     </test>
+
 
 
 </suite>

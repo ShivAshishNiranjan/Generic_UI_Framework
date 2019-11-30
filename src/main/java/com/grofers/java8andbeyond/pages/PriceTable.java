@@ -18,8 +18,6 @@ import java.util.Optional;
  * file created on 01/11/19
  */
 public class PriceTable {
-
-
     Logger logger = LoggerFactory.getLogger(PriceTable.class);
 
     WebDriver driver;
